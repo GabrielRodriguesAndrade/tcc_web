@@ -12,7 +12,7 @@ include 'Controller/EmpresaController.php';
     break;
 
     case '/empresa':
-        echo "oi";
+        echo "oi";  
         EmpresaController::index();//O '::' é usado para chamar metodo statico
     break;
 
@@ -20,6 +20,9 @@ include 'Controller/EmpresaController.php';
         EmpresaController::form();//O '::' é usado para chamar metodo statico
     break;
 
+    case '/eventos':
+        echo "eventos";
+    break;    
     default:
         echo "erro 404";
     break;
