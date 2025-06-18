@@ -4,6 +4,11 @@ class EmpresaController
 {
     public static function index()//Responsável por devolver dados da empresa
     {
+        include "Model/EmpresaModel.php";
+
+        $model = new EmpresaModel();
+
+        $model->getAllRows();
         include "View/modules/Empresa/ListaEmpresa.php";
     }
 

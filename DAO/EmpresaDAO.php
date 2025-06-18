@@ -9,7 +9,7 @@ class EmpresaDAO
         $dsn = "mysql:host=108.179.192.66;port=3306;dbname=gab34505_tcc";
 
         try {
-            $this->conexao = new PDO($dsn, 'gab34505_admin', 'mQQu8phZUzA5;charset=utf8');
+            $this->conexao = new PDO($dsn, 'gab34505_admin', 'mQQu8phZUzA5');
             
             $this->conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
@@ -38,6 +38,11 @@ class EmpresaDAO
 
     public function select()
     {
+        $sql = "SELECT * FROM empresa";
 
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_OBJ);//retorna array de objetos
     }
 }
