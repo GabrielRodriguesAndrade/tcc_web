@@ -9,9 +9,11 @@
  <body>
     <table>
         <tr>
-            <tr>nome</tr>
-            <tr>email</tr>
-            <tr>cnpj</tr>
+            <br>
+            <tr>  nome  </tr>
+            <tr>  email  </tr>
+            <tr>  cnpj  </tr>
+            <br>
         </tr>
 
         <?php foreach($model->rows as $item): ?>
