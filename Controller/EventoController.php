@@ -4,7 +4,6 @@ class EventoController
 {
     public static function index()//Responsável por devolver dados da empresa
     {
-        include "Model/EventoModel.php";
 
         $model = new EventoModel();
 
@@ -19,7 +18,6 @@ class EventoController
 
     public static function save()
     {
-        include 'Model/EventoModel.php';
 
         $model = new EventoModel();
 

@@ -4,7 +4,6 @@ class PagamentoController
 {
     public static function index()
     {
-        include "Model/PagamentoModel.php";
 
         $model = new PagamentoModel();
 

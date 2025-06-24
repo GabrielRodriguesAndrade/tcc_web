@@ -44,4 +44,22 @@ class EstacioanamentoDAO
 
         $stmt->execute();
     }
+
+    public function update()
+    {
+        $sql = "UPDATE estacionamento SET vagas = ?, vagasVip = ?, vagasEspeciais = ? WHERE id_estacionamento = ?";
+
+        $stmt = $this->conexao->prepare($sql);
+
+        $stmt = $this->conexao->prepare($sql);
+
+        $stmt->bindValue(1, $model->vagas);
+        $stmt->bindValue(2, $model->vagasVip);
+        $stmt->bindValue(3, $model->vagasEspeciais);
+        $stmt->bindValue(4, $model->id_estacionamento);
+
+        $stmt->execute();
+    }
+
+
 }

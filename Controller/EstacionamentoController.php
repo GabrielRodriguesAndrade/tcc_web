@@ -4,7 +4,6 @@ class EstacinamentoController
 {
     public static function index()//Responsável por devolver dados da empresa
     {
-        include "Model/EstacionamentoModel.php";
 
         $model = new EstacionamentoModel();
 
@@ -19,7 +18,6 @@ class EstacinamentoController
 
     public static function save()//salvar o formulario no banco
     {
-        include 'Model/EstacionamentoModel.php';
 
         $model = new EstacionamentoModel();
 

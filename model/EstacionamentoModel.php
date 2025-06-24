@@ -5,7 +5,7 @@ class EstacionamentoModel
     public $vagas, $vagasEspeciais, $vagasVip, $id_evento;
 
     public $rows;
-
+    
     public function save()
     {
         include 'DAO/EstacionamentoDAO.php';

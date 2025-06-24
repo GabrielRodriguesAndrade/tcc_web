@@ -33,7 +33,14 @@ class EmpresaDAO
 
     public function update()
     {
+        $sql = "UPDATE empresa SET nome = ?, email = ?, cnpj = ?, senha = ? WHERE id_empresa = ?";
 
+        $stmt = $this->conexao->prepare($sql);
+        
+        $stmt->bindValue(1, $model->nome);
+        $stmt->bindValue(2, $model->email);
+        $stmt->bindValue(3, $model->cnpj);
+        $stmt->bindValue(4, $model->senha);
     }
 
     public function select()
