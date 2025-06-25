@@ -6,20 +6,25 @@ class EventoModel
 
     public $rows;
 
-    public function save()
-    {
-        include 'DAO/EventoDAO.php';
-        
+    public function save(EventoModel $model)
+    {  
         $dao = new EventoDAO();
 
-        $dao->insert($this);//this aqui é o proprio objeto que esta chamando o metodo save la no controller
+        is_null($model->id_evento) ? $dao->insert($model) : $dao->update($model);//this aqui é o proprio objeto que esta chamando o metodo save la no controller
     }
+
     public function getAllRows()
     {
-        include 'DAO/EventoDAO.php';
         
         $dao = new EventoDAO();
 
         $this->rows = $dao->select();
+    }
+
+    public function delete(int $id_evento)
+    {
+        $dao = new EventoDAO();
+
+        $dao->delete($id_evento);
     }
 }

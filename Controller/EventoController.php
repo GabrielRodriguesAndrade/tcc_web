@@ -21,6 +21,7 @@ class EventoController
 
         $model = new EventoModel();
 
+        $model->id_evento = $_POST['id_evento'];
         $model->nome = $_POST['nome'];//preenchendo model
         $model->cidade = $_POST['cidade'];
         $model->local = $_POST['local'];
@@ -34,5 +35,14 @@ class EventoController
 
         $model->save();
 
+    }
+
+    public static function delete()
+    {
+        $model = new EventoModel();
+
+        $model->id_evento = $_POST['id_evento'];
+
+        $model->delete($model->id_evento);
     }
 }

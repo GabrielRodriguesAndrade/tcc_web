@@ -41,6 +41,9 @@ class EmpresaDAO
         $stmt->bindValue(2, $model->email);
         $stmt->bindValue(3, $model->cnpj);
         $stmt->bindValue(4, $model->senha);
+        $stmt->bindValue(5, $model->id_empresa);
+
+        $stmt->execute();
     }
 
     public function select()
@@ -51,5 +54,16 @@ class EmpresaDAO
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_OBJ);//retorna array de objetos
+    }
+
+    public function delete(int $id_empresa)
+    {
+        $sql = "DELETE FROM empresa WHERE id_empresa = ?";
+
+        $stmt = $this->conexao->prepare($sql);
+
+        $stmt->bindValue(1,$id_empresa);
+        
+        $stmt->execute();
     }
 }

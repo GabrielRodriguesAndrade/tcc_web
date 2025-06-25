@@ -18,7 +18,7 @@ class EstacioanamentoDAO
         }
     }
 
-    public function select()//passar int id_evento
+    public function select()
     {
         $sql = "SELECT * FROM Estacionamento WHERE id_evento = ?";
 
@@ -27,10 +27,10 @@ class EstacioanamentoDAO
 
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_OBJ);//retorna array de objetos
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function insert()
+    public function insert(EstacionamentoModel $model)
     {
         $sql = "INSERT INTO estacioanamento (vagas, vagasVip, vagasEspeciais, id_evento) VALUES (?,?,?,?)";
 
@@ -45,7 +45,7 @@ class EstacioanamentoDAO
         $stmt->execute();
     }
 
-    public function update()
+    public function update(EstacionamentoModel $model)
     {
         $sql = "UPDATE estacionamento SET vagas = ?, vagasVip = ?, vagasEspeciais = ? WHERE id_estacionamento = ?";
 
@@ -61,5 +61,14 @@ class EstacioanamentoDAO
         $stmt->execute();
     }
 
+    public function delete(int $id_estacionamento)
+    {
+        $sql = "DELETE FROM estacionamento WHERE id_estacionamento = ?";
 
+        $stmt = $this->conexao->prepare($sql);
+
+        $stmt->bindValue(1, $id_estacionamento);
+
+        $stmt->execute();
+    }
 }

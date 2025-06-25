@@ -47,4 +47,35 @@ class EventoDAO
 
         $stmt->execute();
     }
+
+    public function update()
+    {
+        $sql = "UPDATE SET nome = ?, cidade = ?, 'local' = ?, localizacao = ?, valor = ?, dataInicio = ?, dataFim = ?, pagamento = ?, vagas = ? WHERE id_evento = ?";
+
+        $stmt = $this->conexao->prepare($sql);
+
+        $stmt->bindValue(1, $model->nome);
+        $stmt->bindValue(2, $model->cidade);
+        $stmt->bindValue(3, $model->local);
+        $stmt->bindValue(4, $model->localizacao);
+        $stmt->bindValue(5, $model->valor);
+        $stmt->bindValue(6, $model->dataInicio);
+        $stmt->bindValue(7, $model->dataFim);
+        $stmt->bindValue(8, $model->pagamento);
+        $stmt->bindValue(9, $model->vagas);
+        $stmt->bindValue(10, $model->id_evento);
+
+        $stmt->execute();    
+    }
+
+    public function delete(int $id_evento)
+    {
+        $sql = "DELETE FROM evento WHERE id_evento = ?";
+
+        $stmt = $this->conexao->prepare($sql);
+
+        $stmt->bindValue(1, $id_evento);
+
+        $stmt->execute();
+    }
 }

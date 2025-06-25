@@ -23,8 +23,17 @@ class EmpresaController
         $model->email = $_POST['email'];
         $model->cnpj = $_POST['cnpj'];
         $model->senha = $_POST['senha'];
+        $model->id_empresa = $_POST['id_empresa'];
 
         $model->save();
+    }
 
+    public static function delete()
+    {
+        $model = new EmpresaModel();
+
+        $model->id_empresa = $_POST['id_empresa'];
+
+        $model->delete($model->id_empresa);
     }
 }

@@ -16,11 +16,12 @@ class EstacinamentoController
         include "View/modules/Estacionamento/FormEstacionamento.php";
     }
 
-    public static function save()//salvar o formulario no banco
+    public static function save()//salvar resgistro no banco ou o atualizando
     {
 
         $model = new EstacionamentoModel();
-
+        
+        $model->id_estacionamento = $_POST['id_estacionamento'];
         $model->vagas = $_POST['vagas'];//preenchendo model
         $model->vagasVip = $_POST['vagasVip'];
         $model->vagasEspeciais = $_POST['vagasEspeciais'];
@@ -28,6 +29,14 @@ class EstacinamentoController
         
 
         $model->save();
+    }
 
+    public static function delete()
+    {
+        $model = new EstacionamentoModel();
+
+        $model->id_estacionamento = $_POST['id_estacionamento'];
+
+        $model->delete($model->id_estacionamento);
     }
 }

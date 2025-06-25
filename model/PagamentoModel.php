@@ -8,8 +8,6 @@ class PagamentoModel
     
     public function getAllRows()
     {
-        include "DAO/PagamentoDAO.php";
-
         $dao = new PagamentoDAO();
 
         $this->rows = $dao->select();

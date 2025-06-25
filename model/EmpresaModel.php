@@ -4,20 +4,25 @@ class EmpresaModel
 {
     public $id_empresa, $nome, $email, $cnpj, $senha, $sal;
     public $rows;
-    public function save()
+
+    public function save(EmpresaModel $model)
     {
-        include 'DAO/EmpresaDAO.php';
-        
         $dao = new EmpresaDAO();
 
-        $dao->insert($this);//this aqui é o proprio objeto que esta chamando o metodo save la no controller
+       is_null($model->id_empresa)? $dao->insert($model) : $dao->update($model);
     }
+
     public function getAllRows()
-    {
-        include 'DAO/EmpresaDAO.php';
-        
+    {        
         $dao = new EmpresaDAO();
 
         $this->rows = $dao->select();
+    }
+
+    public function delete(int $id_empresa)
+    {
+        $dao = new EmpresaDAO();
+
+        $dao->delete($id_empresa);
     }
 }

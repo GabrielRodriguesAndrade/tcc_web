@@ -6,20 +6,24 @@ class EstacionamentoModel
 
     public $rows;
     
-    public function save()
-    {
-        include 'DAO/EstacionamentoDAO.php';
-        
+    public function save(EstacionamentoModel $model)
+    {  
         $dao = new EstacionamentoDAO();
 
-        $dao->insert($this);//this aqui é o proprio objeto que esta chamando o metodo save la no controller
+        is_null($model->id_estacionamento) ? $dao->insert($model) : $dao->update($model);
     }
+
     public function getAllRows()
-    {
-        include 'DAO/EstacionamentoDAO.php';
-        
+    { 
         $dao = new EstacionamentoDAO();
 
         $this->rows = $dao->select();
+    }
+
+    public function delete(int $id_estacionamento)
+    {
+        $dao = new EstacionamentoDAO();
+
+        $dao->delete($id_estacionamento);
     }
 }
