@@ -33,6 +33,11 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);//pega a url que o usuar
 
     break;
 
+    case '/pagamento':
+        PagamentoController::index();
+
+    break;
+
     default:
         echo "erro 404";
     break;

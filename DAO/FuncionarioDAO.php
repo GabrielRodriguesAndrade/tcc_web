@@ -1,7 +1,6 @@
 <?php
 
-
-class PagamentoDAO
+class FuncionarioDAO
 {
     private $conexao;
 
@@ -18,17 +17,14 @@ class PagamentoDAO
         }
     }
 
-        public function select(int $id_evento)//passar int id_evento
-        {
-            $sql = "SELECT DATE_FORMAT(entrada, '%H:00') AS hora, SUM(valor) AS total FROM pagamento WHERE id_evento = ? GROUP BY hora ORDER BY hora";
+    public function select(int $id_funcionario)
+    {
+        $sql = "SELECT obs FROM obs_funcionario WHERE id_funcionario = ?";
 
-            $stmt = $this->conexao->prepare($sql);
-            $stmt->bindValue(1, $id_evento);
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindValue(1, $id_funcionario);
+        $stmt->execute();
 
-            $stmt->execute();
-
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }
-
-  
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
 }

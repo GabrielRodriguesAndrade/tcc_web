@@ -18,14 +18,45 @@ class EventoDAO
         }
     }
 
-    public function select()
+    public function select()//ainda precisa passar parametro
     {
         $sql = "SELECT * FROM evento";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_OBJ);//retorna array de objetos
+
+        $eventos = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+        foreach ($eventos as $evento) 
+        {
+            $evento->funcionarios = $this->getFuncionarios($evento->id_evento);           
+            $evento->candidatos = $this->getCandidatos($evento->id_evento);
+        }
+
+        return $eventos;
+    }
+
+    public function getFuncionarios(int $id_evento)
+    {
+        $sql = "SELECT f.* FROM funcionario_evento fe JOIN funcionario f ON f.id_funcionario = fe.id_funcionario WHERE fe.id_evento = ?";
+         
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindValue(1, $id_evento);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function getCandidatos(int $id_evento)
+    {
+        $sql = "SELECT f.* FROM candidato_evento fe JOIN funcionario f ON f.id_funcionario = fe.id_funcionario WHERE fe.id_evento = ?";
+         
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindValue(1, $id_evento);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function insert()

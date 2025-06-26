@@ -4,11 +4,12 @@ class PagamentoController
 {
     public static function index()
     {
-
+        echo "oi";
         $model = new PagamentoModel();
+        $dados = [];
+        $dados = $model->getAllRows(1);
 
-        $model->getAllRows();
-        include "View/modules/Pagamento/ListaPagamento.php";
+        include "View/modules/Pagamento/PagamentoGraficoColum.php";
     }
 
     public static function form()

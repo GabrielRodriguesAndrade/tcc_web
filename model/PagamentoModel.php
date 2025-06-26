@@ -6,10 +6,11 @@ class PagamentoModel
 
     public $rows;
     
-    public function getAllRows()
+    public function getAllRows(int $id_evento)
     {
         $dao = new PagamentoDAO();
 
-        $this->rows = $dao->select();
+        $this->rows = $dao->select($id_evento);
+        return $this->rows;
     }
 }

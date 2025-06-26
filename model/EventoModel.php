@@ -5,7 +5,7 @@ class EventoModel
     public $id_evento, $nome, $cidade, $local , $localizacao, $valor, $dataInicio, $dataFim, $pagamento, $vagas, $id_empresa;
 
     public $rows;
-
+    public $funcionarios, $candidatos;
     public function save(EventoModel $model)
     {  
         $dao = new EventoDAO();
