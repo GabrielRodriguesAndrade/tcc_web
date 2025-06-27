@@ -13,12 +13,12 @@ class EventoModel
         is_null($model->id_evento) ? $dao->insert($model) : $dao->update($model);//this aqui é o proprio objeto que esta chamando o metodo save la no controller
     }
 
-    public function getAllRows()
+    public function getAllRows(int $id_empresa)
     {
         
         $dao = new EventoDAO();
 
-        $this->rows = $dao->select();
+        $this->rows = $dao->select($id_empresa);
     }
 
     public function delete(int $id_evento)

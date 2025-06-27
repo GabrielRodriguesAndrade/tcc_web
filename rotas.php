@@ -34,7 +34,17 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);//pega a url que o usuar
     break;
 
     case '/pagamento':
-        PagamentoController::index();
+        PagamentoController::index();//pega evento individual
+
+    break;
+
+    case '/pagamentoEventos':
+        PagamentoController::indexEventos();//pega de todos os eventos pertencentes a empresa
+
+    break;
+
+    case '/pagamentoMes':
+        PagamentoController::indexMes();//pega de todos os eventos pertencentes a empresa
 
     break;
 

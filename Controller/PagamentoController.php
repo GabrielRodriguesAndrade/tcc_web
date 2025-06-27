@@ -9,12 +9,38 @@ class PagamentoController
         $dados = [];
         $dados = $model->getAllRows(1);
 
-        include "View/modules/Pagamento/PagamentoGraficoColum.php";
+        include "View/modules/Pagamento/PagamentoGraficoColumn.php";
     }
 
-    public static function form()
+    public static function indexEventos()
     {
-        include "View/modules/Pagamento/FormPagamento.php";
+      $eventos = new EventoModel();
+      $eventos->id_empresa = 1;
+      $eventos->getAllRows(1);
+
+      $dados = [];
+
+      $model = new PagamentoModel();
+      $dados = $model->getRowsEventos($eventos);
+      
+      include "View/modules/Pagamento/PagamentoGraficoColumnEventos.php";
     }
+
+    public static function indexMes()
+    {
+      $eventos = new EventoModel();
+      $eventos->id_empresa = 1;
+      $eventos->getAllRows(1);
+      
+      $model = new PagamentoModel();
+      $model->getRowsMes($eventos->rows);
+      
+      var_dump($model->rows);
+      $dados = $model->somarPorMes($model->rows);
+      
+
+      include "View/modules/Pagamento/PagamentoGraficoColumnMes.php";
+    }
+
 
 }

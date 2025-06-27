@@ -18,11 +18,12 @@ class EventoDAO
         }
     }
 
-    public function select()//ainda precisa passar parametro
+    public function select(int $id_empresa)//ainda precisa passar parametro
     {
-        $sql = "SELECT * FROM evento";
+        $sql = "SELECT * FROM evento WHERE id_empresa = ?";
 
         $stmt = $this->conexao->prepare($sql);
+        $stmt->bindValue(1, $id_empresa);
         $stmt->execute();
 
 

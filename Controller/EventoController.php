@@ -6,8 +6,10 @@ class EventoController
     {
 
         $model = new EventoModel();
+        //$model->id_empresa = $_POST['id'];
+        $model->id_empresa = 1;
 
-        $model->getAllRows();
+        $model->getAllRows($model->id_empresa);
         include "View/modules/Evento/ListaEvento.php";
     }
 
