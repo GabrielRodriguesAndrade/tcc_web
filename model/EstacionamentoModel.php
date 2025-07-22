@@ -2,7 +2,7 @@
 
 class EstacionamentoModel
 {
-    public $vagas, $vagasEspeciais, $vagasVip, $id_evento;
+    public $vagas, $vagasEspeciais, $vagasVip, $id_evento, $id_estacionamento;
 
     public $rows;
     
@@ -13,11 +13,11 @@ class EstacionamentoModel
         is_null($model->id_estacionamento) ? $dao->insert($model) : $dao->update($model);
     }
 
-    public function getAllRows()
+    public function getAllRows(int $id_evento)
     { 
         $dao = new EstacionamentoDAO();
 
-        $this->rows = $dao->select();
+        $this->rows = $dao->select($id_evento);
     }
 
     public function delete(int $id_estacionamento)

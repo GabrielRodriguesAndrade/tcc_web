@@ -53,8 +53,9 @@ class CarroDAO
     {
         $sql = "SELECT obs FROM obs_carro WHERE id_carro = ?";
 
-        $stmt = $this->prepare($sql);
+        $stmt = $this->conexao->prepare($sql);
 
         $stmt->bindValue(1, $id_carro);
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
 }

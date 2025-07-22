@@ -31,7 +31,7 @@ class EmpresaDAO
         $stmt->execute();
     }
 
-    public function update()
+    public function update(EmpresaModel $model)
     {
         $sql = "UPDATE empresa SET nome = ?, email = ?, cnpj = ?, senha = ? WHERE id_empresa = ?";
 

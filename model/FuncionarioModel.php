@@ -2,7 +2,7 @@
 
 class FuncionarioModel
 {
-    public $id_funcionario, $nome, $email, $cpf, $telefone,  $obs = [];
+    public $id_funcionario, $nome, $email, $cpf, $telefone, $senha, $sal,  $obs = [];
 
     public $rows;
 
@@ -11,6 +11,13 @@ class FuncionarioModel
         $dao = new FuncionarioDAO();
 
         $dao->select($id_funcionario);
+    }
+
+    public function save()
+    {
+        $dao = new FuncionarioDAO();
+
+        $dao->insert($this);
     }
 
 }

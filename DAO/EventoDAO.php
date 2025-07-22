@@ -60,7 +60,7 @@ class EventoDAO
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function insert()
+    public function insert(EventoModel $model)
     {
         $sql = "INSERT INTO evento (nome, cidade, 'local', localizacao, valor, dataInicio, dataFim, pagamento, vagas, id_empresa) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
@@ -80,7 +80,7 @@ class EventoDAO
         $stmt->execute();
     }
 
-    public function update()
+    public function update(EventoModel $model)
     {
         $sql = "UPDATE SET nome = ?, cidade = ?, 'local' = ?, localizacao = ?, valor = ?, dataInicio = ?, dataFim = ?, pagamento = ?, vagas = ? WHERE id_evento = ?";
 

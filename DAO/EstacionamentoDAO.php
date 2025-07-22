@@ -1,7 +1,7 @@
 <?php
 
 
-class EstacioanamentoDAO
+class EstacionamentoDAO
 {
     private $conexao;
 
@@ -18,12 +18,12 @@ class EstacioanamentoDAO
         }
     }
 
-    public function select()
+    public function select(int $id_evento)
     {
         $sql = "SELECT * FROM Estacionamento WHERE id_evento = ?";
 
         $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(1, $model->id_evento);
+        $stmt->bindValue(1, $id_evento);
 
         $stmt->execute();
 
