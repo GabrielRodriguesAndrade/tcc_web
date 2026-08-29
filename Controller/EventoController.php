@@ -1,0 +1,51 @@
+<?php
+
+class EventoController
+{
+    public static function index()//Responsável por devolver dados da empresa
+    {
+
+        $model = new EventoModel();
+        //$model->id_empresa = $_POST['id'];
+        $model->id_empresa = 1;
+
+        $model->getAllRows($model->id_empresa);
+        include "View/modules/Evento/ListaEvento.php";
+    }
+
+    public static function form()//Responsável por devolver formulario
+    {
+        include "View/modules/Evento/FormEvento.php";
+    }
+
+    public static function save()
+    {
+        Security::requireValidCsrfToken();
+        $model = new EventoModel();
+
+        $model->id_evento = $_POST['id_evento'];
+        $model->nome = $_POST['nome'];//preenchendo model
+        $model->cidade = $_POST['cidade'];
+        $model->local = $_POST['local'];
+        $model->localizacao = $_POST['localizacao'];
+        $model->valor = $_POST['valor'];
+        $model->dataInicio = $_POST['dataInicio'];
+        $model->dataFim = $_POST['dataFim'];
+        $model->pagamento = $_POST['pagamento'];
+        $model->vagas = $_POST['vagas'];
+        $model->id_empresa = $_POST['id_empresa'];
+
+        $model->save();
+
+    }
+
+    public static function delete()
+    {
+        Security::requireValidCsrfToken();
+        $model = new EventoModel();
+
+        $model->id_evento = $_POST['id_evento'];
+
+        $model->delete($model->id_evento);
+    }
+}
